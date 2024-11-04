@@ -24,6 +24,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.example.composefirestore.ui.theme.ComposeFireStoreTheme
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
 
 
@@ -123,7 +124,9 @@ fun Birth(m: Modifier){
             }
             Button(onClick = { db.collection("users")
                 //.whereEqualTo("userName", userName)
-                .whereLessThan("userWeight", userWeight)
+                //.whereLessThan("userWeight", userWeight)
+                .orderBy("userWeight", Query.Direction.DESCENDING)
+                .limit(2)
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
