@@ -108,8 +108,10 @@ fun Birth(m: Modifier){
         Row {
             Button(onClick = { val user = Person(userName, userWeight, userPassword)
                 db.collection("users")
-                .add(user)
-                .addOnSuccessListener { documentReference ->
+                //.add(user)
+                    .document(userName)
+                    .set(user)
+                    .addOnSuccessListener { documentReference ->
                     msg = "新增/異動資料成功"
                 }
                 .addOnFailureListener { e ->
