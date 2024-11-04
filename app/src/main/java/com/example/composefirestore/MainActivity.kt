@@ -6,9 +6,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -53,6 +55,8 @@ fun Birth(m: Modifier){
     var userName by remember { mutableStateOf("許閔慈")}
     var userWeight by remember { mutableStateOf(3800) }
     var userPassword by remember { mutableStateOf("")}
+    var msg by remember { mutableStateOf("訊息")}
+
 
 
 
@@ -97,6 +101,18 @@ fun Birth(m: Modifier){
         Text("您輸入的姓名是：$userName\n出生體重為：$userWeight 公克"
                 + "\n密碼：$userPassword")
 
+        Row {
+            Button(onClick = {  }) {
+                Text("新增/修改資料")
+            }
+            Button(onClick = {  }) {
+                Text("查詢資料")
+            }
+            Button(onClick = {  }) {
+                Text("刪除資料")
+            }
+        }
+        Text(text = msg)
 
 
     }
